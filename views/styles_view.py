@@ -1,0 +1,3 @@
+
+class StyleView():
+    pass

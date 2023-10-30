@@ -70,4 +70,5 @@ def db_create(sql, data_tuple) -> int:
         db_cursor.execute(sql, data_tuple)
         new_id = db_cursor.lastrowid  # integer
         db_cursor.execute("SELECT * FROM orders WHERE id=?", (new_id,))
-        return db_cursor.fetchone()
+        # return db_cursor.fetchone()
+        return new_id

@@ -3,7 +3,7 @@ from nss_handler import status
 from repository import db_get_single, db_get_all
 
 
-class MetalView:
+class MetalView():
 
     def get(self, handler, pk):
         if pk != 0:
@@ -21,7 +21,7 @@ class MetalView:
             return handler.response(serialized_metal, status.HTTP_200_SUCCESS.value)
         else:
             sql = "SELECT m.id, m.metal, m.price FROM Metals m"
-            query_results = db_get_all(sql)
+            query_results = db_get_all(sql, pk)
             metals = [dict(row) for row in query_results]
             serialized_metals = json.dumps(metals)
 

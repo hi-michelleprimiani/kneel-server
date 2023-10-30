@@ -10,7 +10,7 @@ class SizeView():
             sql = """
                 SELECT
                     size.id,
-                    size.caret,
+                    size.carets,
                     size.price
                 FROM Sizes size 
                 WHERE size.id = ?
@@ -21,7 +21,7 @@ class SizeView():
             return handler.response(serialized_size, status. HTTP_200_SUCCESS.value)
 
         else:
-            sql = "SELECT siz.id, siz.caret, siz.price FROM Sizes siz"
+            sql = "SELECT size.id, size.carets, size.price FROM Sizes size"
             query_results = db_get_all(sql, pk)
             metals = [dict(row) for row in query_results]
             serialized_sizes = json.dumps(metals)

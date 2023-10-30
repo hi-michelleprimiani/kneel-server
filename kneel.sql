@@ -82,3 +82,39 @@ INSERT INTO Orders (metalId, styleId, sizeId) VALUES
     (5, 2, 1),
     (1, 4, 1);
 
+
+
+SELECT
+    o.id,
+    o.styleId,
+    o.metalId,
+    o.sizeId,
+    Styles.id AS style_id,
+    Styles.style AS style,
+    Styles.price AS style_price,
+    Metals.id AS metal_id,
+    Metals.metal AS metal,
+    Metals.price AS metal_price,
+    Sizes.id AS size_id,
+    Sizes.carets AS carets,
+    Sizes.price AS size_price
+        FROM Orders o
+        LEFT JOIN Styles ON o.styleId = Styles.id
+        LEFT JOIN Metals ON o.metalId = Metals.id
+        LEFT JOIN Sizes ON o.sizeId = Sizes.id
+        GROUP BY o.id;
+
+-- Simple Table with names and order price 
+SELECT
+    o.id,
+    Styles.style AS style,
+    Metals.metal AS metal,
+    Sizes.carets AS carets,
+    Sizes.price AS size_price
+        FROM Orders o
+        LEFT JOIN Styles ON o.styleId = Styles.id
+        LEFT JOIN Metals ON o.metalId = Metals.id
+        LEFT JOIN Sizes ON o.sizeId = Sizes.id
+        GROUP BY o.id;
+
+SELECT o.id, o.metalId, o.styleId, o.sizeId, FROM Orders o WHERE o.id = 24;
